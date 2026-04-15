@@ -1,13 +1,19 @@
 import Link from "next/link";
 import { getPosts } from "@/lib/posts";
+import { TypewriterEffect } from "@/components/TypewriterEffect";
 
 export default function Home() {
   const posts = getPosts();
 
   return (
     <div>
-      <h1 className="text-2xl mb-6 title-text inline-block">Home Directory</h1>
-      <p className="mb-8">Welcome to the system. Documenting learned protocols and interests.</p>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl title-text inline-block">Home Directory</h1>
+        <Link href="/projects" className="text-sm text-primary hover:underline border border-primary px-2 py-1 bg-card/50">
+          [ ls ./projects ]
+        </Link>
+      </div>
+      <p className="mb-8 h-6"><TypewriterEffect text="Welcome to the system. Documenting learned protocols and interests." /></p>
 
       <div className="space-y-8">
         {posts.map((post) => (
