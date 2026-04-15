@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { MatrixRain } from "@/components/MatrixRain";
+import { InteractiveTerminal } from "@/components/InteractiveTerminal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,11 +24,13 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="terminal" themes={['terminal', 'cyberpunk', 'retro']}>
-          <div className="layout-container min-h-screen flex flex-col">
+          <div className="layout-container min-h-screen flex flex-col relative z-0">
+              <MatrixRain />
               <ThemeSwitcher />
-              <main className="flex-1 p-4 md:p-8">
+              <main className="flex-1 p-4 md:p-8 relative z-10">
                 {children}
               </main>
+              <InteractiveTerminal />
           </div>
         </ThemeProvider>
       </body>
